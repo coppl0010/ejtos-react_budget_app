@@ -15,6 +15,13 @@ const AllocationForm = (props) => {
                 setCost("");
                 return;
             }
+            if(isNaN('cost')) {
+                alert("You cannot reduce the budget value lower than the spending");
+                setCost("");
+                return;
+            }
+            
+            
 
         const expense = {
             name: name,
@@ -58,15 +65,17 @@ const AllocationForm = (props) => {
                         <option defaultValue value="Add" name="Add">Add</option>
                 <option value="Reduce" name="Reduce">Reduce</option>
                   </select>
-
+                  <span>&nbsp;&nbsp;&nbsp;</span>
                     <input
                         required='required'
                         type='number'
                         id='cost'
+                        placeholder="Please insert number"
                         value={cost}
-                        style={{ marginLeft: '2rem' , size: 10}}
+                        style={{ size: 10}}
                         onChange={(event) => setCost(event.target.value)}>
                         </input>
+                        
 
                     <button className="btn btn-primary" onClick={submitEvent} style={{ marginLeft: '2rem' }}>
                         Save
